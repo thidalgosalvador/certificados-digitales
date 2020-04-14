@@ -60,7 +60,7 @@ La firma del servidor (en inglés, Server Signature) es la identidad pública de
 | Microsoft\-IIS/8\.5 | 3    |
 | BigIP               | 2    |
 
-### Certificados digitales
-------------------------------------------
-Entidades Emisoras (CA’s)
+# Certificados digitales
+
+## Entidades Emisoras (CA’s)
 El prestador de Servicios de Confianza (PSC) Camerfirma, del grupo italiano Inforcert, con 16 sedes electrónicas (39%) ocupa un destacado primer puesto en certificados emitidos para Diputaciones Provinciales. Destaca el PSC vasco, Izenpe S.A., un proyecto de Autoridad Certificadora impulsado por el Gobierno Vasco y las Diputaciones Forales, que emite certificados para las tres diputaciones de la comunidad autónoma del País Vasco.
