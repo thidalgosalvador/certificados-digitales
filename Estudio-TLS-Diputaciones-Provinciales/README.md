@@ -107,3 +107,49 @@ Relacionado con los certificados digitales, la configuración en la parte servid
 | Correcta    | 23    | 56,1% |
 | Con errores | 18    | 43,9% |
 
+##### Validación de certificados
+
+En el inicio de la comunicación segura entre un cliente (navegador web) y el servidor web de la sede electrónica se realiza el proceso de validación del certificado digital facilitado por el servidor. Esta validación se puede realizar mediante protocolo OCSP o a través de listas CRL.
+
+La opción más óptima para conocer el estado de revocación de un certificado digital consiste es configurar OCSP Stapling. En este caso, es el servidor quien realiza el proceso de validación del certificado, y el resultado se lo envía al cliente en la negociación inicial TLS, eliminando la necesidad de que los clientes se pongan en contacto con el CA.
+
+| OCSP           | Sedes | %     |
+|---------------:|:-----:|------:|
+| Configurado    | 2     | 4,9%  |
+| No configurado | 39    | 95,1% |
+
+Tan solo dos sedes electrónicas tienen activado la opción de OCSP Stapling, funcionalidad que mejora la seguridad, el rendimiento y la privacidad.
+
+#### Renovación de certificados
+
+Respecto a la renovación de certificados digitales, se observó en el momento de realizar el estudio que, en dos sedes electrónicas, las fechas de expiración estaban a 4 y 17 días vista. Este dato indica una gestión incorrecta del ciclo de vida del certificado, donde las buenas prácticas indican una renovación del certificado 30 días antes de su caducidad, y en el caso de periodos cortos -como los emitidos por Lets Encrypts- pasados 2/3 del tiempo de vida.
+
+### Protocolos y cifrados
+#### Protocolos SSL/TLS
+
+Por defecto, el protocolo criptográfico más utilizado en las sedes electrónicas es la versión 1.2 de TLS. Se ofrece en 36 sedes. En la parte positiva en el uso de protocolos por defecto, destacar que una de las sedes ya utiliza TLS v1.3. Mientras que, en el aspecto negativo, aún cuatro sedes no ofrecen más allá de TLS v1.0, un protocolo que apareció en 1999, y que posee múltiples vulnerabilidades de seguridad que se desaconseja su uso hoy en día.
+
+| Protocolo por defecto | Sedes | %     |
+|----------------------:|:-----:|------:|
+| TLS1\.0               | 4     | 9,8%  |
+| TLS1\.2               | 36    | 87,8% |
+| TLS1\.3               | 1     | 2,4%  |
+
+Si bien TLS v1.2 es el protocolo por defecto negocia en un 87,8% de los casos, el uso de protocolos depreciados y/o obsoletos en las configuraciones es aún amplio. Tan solo seis sedes ofrecen nada más que TLS v1.2, mientras que la mayoría (25 sedes) ofrecen las tres versiones de TLS (v1, v1.1 y v1.2)
+
+| Protocolos                       | Sedes | %     |
+|---------------------------------:|:-----:|------:|
+| TLSv1                            | 4     | 9,8%  |
+| TLSv1\.2                         | 6     | 14,6% |
+| TLSv1\.1 \+ TLSv1\.2             | 5     | 12,2% |
+| TLSv1 \+ TLSv1\.1 \+ TLSv1\.2    | 25    | 61,0% |
+| TLSv1\.1 \+ TLSv1\.2 \+ TLSv1\.3 | 1     | 2,4%  |
+
+Las mejores prácticas de seguridad recomiendan eliminar las versiones TLS v1 y TLS v1.1, y por supuesto, descartar por completo el uso de versión obsoletas como SSL v2 y SSLv3. Llama la atención que estos últimos protocolos con serías vulnerabilidades de seguridad sigan ofreciéndose en alguna de las sedes estudiadas.
+
+| Se ofrece | SSLv2 | SSLv3 |
+|-----------|-------|-------|
+| NO        | 40    | 35    |
+| SI        | 1     | 6     |
+
+#### Conjunto de Cifrados (Ciphersuite)
