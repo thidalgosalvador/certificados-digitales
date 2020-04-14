@@ -203,7 +203,7 @@ Las cabeceras de seguridad más utilizadas se muestran en la siguiente table:
 | Referrer\-Policy            | 3    |
 | Content\-Security\-Policy   | 1    |
 
-#### Herramientas y documentos
+### Herramientas y documentos
 Para la obtención de los datos necesarios para realizar el estudio se han utilizado las siguientes herramientas:
 
 - Script SSL Certificate Check - http://prefetch.net/code/ssl-cert-check 
