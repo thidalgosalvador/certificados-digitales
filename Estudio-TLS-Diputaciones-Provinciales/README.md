@@ -22,3 +22,33 @@ Se muestran los datos de diputaciones provinciales en las provincias de las comu
 | PAIS VASCO           | 3               |
 
 Otras comunidades autónomas uniprovinciales como, el Principado de Asturias, Cantabria, Comunidad de Madrid, Región de Murcia, Navarra o La Rioja, no están representadas en el estudio dado que no poseen Diputación Provincial. Del mismo modo, las ciudades autónomas de Ceuta y Melilla, donde las competencias propias de las Diputaciones son asumidas por el propio gobierno y asamblea autonómica tampoco aparecen en el estudio.
+
+Sedes electrónicas bajo HTTPS
+------------------------------------------
+Como era de esperar, en un entorno sensible como las sedes electrónicas de las Diputaciones Provinciales, la totalidad de las mismas ofrecen sus servicios bajo el protocolo HTTPS.
+
+| Uso de HTTPS   | Sedes | %      |
+|---------------:|:-----:|-------:|
+| Configurado    | 41    | 100,0% |
+| No configurado | 0     | 0,0%   |
+
+Sin embargo, destaca que dos sedes (4,9%) no redirección automáticamente de HTTP a HTTPS.
+
+| Redirección | Nº de Sedes | %     |
+|-----------:|:-----------:|------:|
+| Código 200  | 2           | 4,9%  |
+| Código 30x  | 39          | 95,1% |
+
+Así mismo, llama la atención la baja implantación de HSTS. HTTP Strict Transport Security (HSTS) es una política de seguridad web que permite a un servidor web imponer/forzar el uso de TLS para los User-Agent compatibles, como -por ejemplo- un navegador web. El HSTS permite una implementación más efectiva del TLS asegurando que toda la comunicación se lleve a cabo sobre una capa de transporte segura en el lado del cliente. En particular, el HSTS mitiga las variantes de los ataques de "hombre en el medio" (MiTM) en los que el TLS puede ser eliminado de las comunicaciones con un servidor, dejando al usuario vulnerable a mayores riesgos.
+
+| HSTS           | Sedes | %     |
+|---------------:|:-----:|------:|
+| Configurado    | 3     | 7,3%  |
+| No configurado | 38    | 92,7% |
+
+Si bien, la configuración de este mecanismo de seguridad en la parte del servidor web no es complejo, tan solo tres sedes electrónicas lo tienen implementado a la hora de realizar el estudio.
+
+Server Signature
+------------------------------------------
+La firma del servidor (en inglés, Server Signature) es la identidad pública del servidor web. Contiene información sensible que -en general- como buena práctica de seguridad se suele desactivar para evitar la divulgación de las versiones de software utilizadas. Nueve de las sedes estudiadas no han devuelto ningún dato mientras que el resto mostraba la versión y software utilizado para servir los contenidos. Destaca el uso de servidores web Apache, en su rama 2.2 (6 sedes) y 2.4 (7 sedes), y del servidor web nginx (6 sedes). Así mismo, tres sedes todavía utilizan servidores web bajo Microsoft-IIS/7.5, ofrecidos en servidores con sistema operativo Windows Server 2008 R2, fuera de soporte desde enero de 2020.
+
