@@ -174,7 +174,16 @@ Las últimas tendencias marcan el uso de cifrados fuertes con modos de operació
 | aNULL \(No Encr/noAuth\) | 2         | 39 |
 
 Destaca negativamente el uso de protocolos aNULL, que no aportan ni cifrado ni autenticación) en dos sedes, y el uso casi extendido de cifrados 3DES_IDEA y LOW (cifrados del tipo RC2, RC4 o DES), que verdaderamente, para la negociación con el actual parque de clientes susceptibles de conectar con una sede electrónica, no serían necesarios.
+
 El orden de los cifrados más usados sería el siguiente:
+| ORDEN | Sedes | CIPHER\_Hex   | CIPHER\_NAME                                 |
+|------:|:-----:|:--------------|:---------------------------------------------|
+| 1     | 27    | cipher\_xc030 | TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384 |
+| 2     | 26    | cipher\_xc028 | TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384 |
+| 3     | 24    | cipher\_xc014 | TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA    |
+| 4     | 20    | cipher\_x9f   | TLS\_DHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384   |
+| 5     | 11    | cipher\_x6b   | TLS\_DHE\_RSA\_WITH\_AES\_256\_CBC\_SHA256   |
+
 
 Es curioso que a nivel de cifrado simétrico prevalece AES de 256 bits respecto a AES-128 bits, cuando con 128 bits ofrece un nivel de seguridad suficiente con un mejor rendimiento. 
 
