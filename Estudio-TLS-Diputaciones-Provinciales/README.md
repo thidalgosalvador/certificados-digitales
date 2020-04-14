@@ -153,3 +153,67 @@ Las mejores prácticas de seguridad recomiendan eliminar las versiones TLS v1 y 
 | SI        | 1     | 6     |
 
 #### Conjunto de Cifrados (Ciphersuite)
+
+Tras el protocolo, el tipo de cifrado (ciphersuite) constituye un parámetro fundamental para la seguridad de la comunicación entre el servidor y el cliente ya que se encarga del cifrado final de los datos, un cifrado simétrico.
+
+Uno de los parámetros que refuerza el concepto de seguridad consiste en que el servidor fuerce su lista de ciphers en la negociación con el cliente; y no al revés. De esta forma se evita que un cliente quiera negociar con un cifrado débil antes que con uno más fuerte. En el estudio de las sedes, aún diez de ellas no fuerzan en sus configuraciones que sea el servidor quien negocie la lista de ciphersuites.
+
+| Orden cipher | Sedes | %     |
+|-------------:|:-----:|------:|
+| Servidor     | 31    | 24,4% |
+| Cliente      | 10    | 75,6% |
+
+Las últimas tendencias marcan el uso de cifrados fuertes con modos de operación en bloques (AEAD). Un total de 34 sedes ofrecen este tipo de cifrado seguro, mientras que siete sedes no lo soportan en sus configuraciones. 
+
+| Tipo de cifrados         | Se ofrece | No |
+|-------------------------:|:---------:|---:|
+| Strong \(AEAD ciphers\)  | 34        | 7  |
+| Medium                   | 40        | 1  |
+| Low                      | 11        | 30 |
+| 3DES\_IDEA               | 22        | 19 |
+| aNULL \(No Encr/noAuth\) | 2         | 39 |
+
+Destaca negativamente el uso de protocolos aNULL, que no aportan ni cifrado ni autenticación) en dos sedes, y el uso casi extendido de cifrados 3DES_IDEA y LOW (cifrados del tipo RC2, RC4 o DES), que verdaderamente, para la negociación con el actual parque de clientes susceptibles de conectar con una sede electrónica, no serían necesarios.
+El orden de los cifrados más usados sería el siguiente:
+
+Es curioso que a nivel de cifrado simétrico prevalece AES de 256 bits respecto a AES-128 bits, cuando con 128 bits ofrece un nivel de seguridad suficiente con un mejor rendimiento. 
+
+### Cabeceras de Seguridad
+
+Para la mejora de la seguridad de sitios webs, existen una serie de cabeceras de respuesta HTTP relacionadas con la seguridad que aportan niveles adicionales de protección. Una práctica recomendada consiste en implementar este tipo de cabeceras, siempre que sea posible. Servicios online gratuitos como Security Headers (https://securityheaders.com/) proporciona un mecanismo para evaluar el estado actual del servidor, y desplegar aquellas cabeceras pendientes.
+
+| Grado | Sedes | %     |
+|------:|:-----:|------:|
+| A     | 1     | 2,4%  |
+| B     | 1     | 2,4%  |
+| C     | 6     | 14,6% |
+| D     | 8     | 19,5% |
+| F     | 20    | 48,8% |
+| R     | 5     | 12,2% |
+
+Casi la mitad de las sedes estudiadas, el 48,8%, obtienen un grado F (Fail) en su puntuación; es decir, no implementan cabeceras de seguridad alguna. Tan solo seis sedes (14,6%) incluye en su configuración al menos cuatro cabeceras para alcanzar el grado C, que indica un nivel aceptable de seguridad en ese aspecto.
+Las cabeceras de seguridad más utilizadas se muestran en la siguiente table:
+
+| Cabecera                    | Usos |
+|----------------------------:|:----:|
+| X\-Content\-Type\-Options   | 14   |
+| X\-XSS\-Protection          | 14   |
+| X\-Frame\-Options           | 13   |
+| Strict\-Transport\-Security | 10   |
+| Referrer\-Policy            | 3    |
+| Content\-Security\-Policy   | 1    |
+
+#### Herramientas y documentos
+Para la obtención de los datos necesarios para realizar el estudio se han utilizado las siguientes herramientas:
+
+- Script SSL Certificate Check - http://prefetch.net/code/ssl-cert-check 
+- Script testssl.sh-3.0 – https://github.com/drwetter/testssl.sh
+- SSL labs Test - https://www.ssllabs.com/ssltest/
+- Hardenize - https://www.hardenize.com/
+- Immuniweb SSL Security Test - https://www.immuniweb.com/ssl/
+- Security Headers - https://securityheaders.com/
+- Lista Ciphersuites en Hex - https://testssl.sh/openssl-iana.mapping.html
+- Security/Server Side TLS - https://wiki.mozilla.org/Security/Server_Side_TLS
+- Mozilla SSL Configuration Generator - https://ssl-config.mozilla.org/
+- OWASP TLS - https://cheatsheetseries.owasp.org/cheatsheets/TLS_Cipher_String_Cheat_Sheet.html
+
