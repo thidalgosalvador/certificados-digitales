@@ -60,7 +60,50 @@ La firma del servidor (en inglés, Server Signature) es la identidad pública de
 | Microsoft\-IIS/8\.5 | 3    |
 | BigIP               | 2    |
 
-# Certificados digitales
+### Certificados digitales
 
-## Entidades Emisoras (CA’s)
+#### Entidades Emisoras (CA’s)
+
 El prestador de Servicios de Confianza (PSC) Camerfirma, del grupo italiano Inforcert, con 16 sedes electrónicas (39%) ocupa un destacado primer puesto en certificados emitidos para Diputaciones Provinciales. Destaca el PSC vasco, Izenpe S.A., un proyecto de Autoridad Certificadora impulsado por el Gobierno Vasco y las Diputaciones Forales, que emite certificados para las tres diputaciones de la comunidad autónoma del País Vasco.
+
+| Entidad Emisora     | Sedes | %     |
+|--------------------:|:-----:|------:|
+| AC Camerfirma S\.A  | 16    | 39,0% |
+| DigiCert Inc        | 7     | 17,1% |
+| FNMT\-RCM           | 5     | 12,2% |
+| ACCV                | 4     | 9,8%  |
+| IZENPE S\.A\.       | 3     | 7,3%  |
+| Let's Encrypt       | 2     | 4,9%  |
+| CATCert             | 2     | 4,9%  |
+| Firmaprofesional    | 1     | 2,4%  |
+| GoDaddy\.com, Inc\. | 1     | 2,4%  |
+
+Si a nivel mundial, el auge de popularidad de la entidad Lets Encrypts, que emite certificados gratuitos, en los últimos meses ha sido destacada, en el ámbito de las Diputaciones, según los datos del estudio, tan solo está implantada en dos sedes electrónicas.
+
+#### Tamaño de Clave
+
+Respecto al tipo de clave usado en los certificados digitales, el 100% de las sedes electrónicas usan el algoritmo RSA. La mayoría de ellas, un 85,4%, utiliza un tamaño de clave de 2048bits, mientras que tan solo seis sedes optaron por un tamaño mayor de 4096bits. Destaca -por su ausencia- el uso de claves con algoritmos de Curva Eliptica (ECDSA), que con menor número de bits ofrecen una seguridad y robustez de cifrado que el algoritmo RSA; y su compatibilidad con los actuales navegadores y sistemas operativos es amplia tanto en equipos PC como en dispositivos móviles.
+
+| Key Size      | Sedes | %     |
+|--------------:|:-----:|------:|
+| RSA 2048 bits | 35    | 85,4% |
+| RSA 4096 bits | 6     | 14,6% |
+
+#### Registro CAA
+
+En lo que respecta al control de emisión de certificados, ninguna de las sedes del estudio implementa el mecanismo CAA. CAA (Certificate Authority Authorization) es un registro DNS que especifica aquella(s) CA(s) que pueden emitir un certificado digital para el nombre de dominio correspondiente. Los registros de CAA son verificados por las CA antes de emitir el certificado digital.
+
+| CAA            | Sedes | %      |
+|---------------:|:-----:|-------:|
+| Configurado    | 0     | 0,0%   |
+| No configurado | 41    | 100,0% |
+
+#### Cadena de confianza
+
+Relacionado con los certificados digitales, la configuración en la parte servidor de la cadena de confianza, según las buenas prácticas, debe ofrece el certificado final junto con la jerarquía de certificados de la CA emisora (sin agregar la CA raíz, o rootCA). Un 43,9% de las sedes (18 de ellas) muestran errores a la hora de enviar la cadena de confianza. Si bien esto no supone un error con impacto en los usuarios finales que acceden a las sedes, su correcta configuración haría más optimo el acceso a las mismas.
+
+| Jerarquía   | Sedes | %     |
+|------------:|:-----:|------:|
+| Correcta    | 23    | 56,1% |
+| Con errores | 18    | 43,9% |
+
